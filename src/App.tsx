@@ -1,11 +1,13 @@
 import "./assets/css/jobs.css";
+import { Logo, Nav } from "./components";
 
 function App() {
   return (
-    <div className="App">
-      Githb Jobs
+    <div>
+      <Logo/>
+      <Nav/>
     </div>
   )
 }
 
-export default App
+export default App;

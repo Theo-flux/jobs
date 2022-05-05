@@ -1,4 +1,5 @@
-@import "main.css";
+@import url("main.css");
+
 
 :root {
     --color-lilac: #F6F7FB;
