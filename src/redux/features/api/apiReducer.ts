@@ -1,5 +1,7 @@
+import { ApiState, Action } from "../../interfaces"
+
 import {
-    FETCH_JOBS,
+    FETCH_JOBS_REQUEST,
     FETCH_JOBS_SUCCESS,
     FETCH_JOBS_ERROR
 } from "./apiTypes"
@@ -8,18 +10,14 @@ const intialState = {
     loading: false,
     jobs: [],
     error: ""
-}
+} as ApiState
 
-type Action = {
-    type: string,
-    info?: string,
-    payload?: any
-}
+
 
 const jobsReducer = (state = intialState, action: Action) => {
     const {type, payload} = action
     switch (type) {
-        case FETCH_JOBS: return {
+        case FETCH_JOBS_REQUEST: return {
             ...state,
             loading: true
         }

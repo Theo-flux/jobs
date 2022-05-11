@@ -1,17 +1,23 @@
+import axios from 'axios'
+import store from "../../store"
+import { ApiState } from "../../interfaces"
+
+type Dispatch = typeof store.dispatch
+
 import {
-    FETCH_JOBS,
+    FETCH_JOBS_REQUEST,
     FETCH_JOBS_SUCCESS,
     FETCH_JOBS_ERROR
 } from "./apiTypes"
 
-export const fetchJobs = () => {
+export const fetchJobsRequest = () => {
     return {
-        type: FETCH_JOBS,
+        type: FETCH_JOBS_REQUEST,
         info: "sets loading state to true"
     }
 }
 
-export const fetchJobsSuccess = (jobs: {}[]) => {
+export const fetchJobsSuccess = (jobs: ApiState['jobs']) => {
     return {
         type: FETCH_JOBS_SUCCESS,
         info: "get the data from the api",
@@ -27,3 +33,10 @@ export const fetchJobsError = (error: string) => {
     }
 }
 
+export const fetchJobs = () => {
+    return (dispatch: Dispatch) => {
+        dispatch(fetchJobsRequest())
+        axios.get("")
+        .then
+    }
+}
