@@ -16,7 +16,7 @@ type Action = {
     payload?: any
 }
 
-export const jobsReducer = (state = intialState, action: Action) => {
+const jobsReducer = (state = intialState, action: Action) => {
     const {type, payload} = action
     switch (type) {
         case FETCH_JOBS: return {
@@ -38,6 +38,6 @@ export const jobsReducer = (state = intialState, action: Action) => {
 
         default: return state
     }
-
 }
 
+export default jobsReducer
