@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Div, Section } from './shared';
+import { Div, Section } from "./shared";
+import { Home } from "./components/home"
 
 function Navigator() {
   return (
@@ -8,7 +9,7 @@ function Navigator() {
         <Div>
             <div className="py-8">
                 <Routes>
-                  <Route path="/"/>
+                  <Route path="/" element={<Home/>}/>
                 </Routes>
             </div>
         </Div>

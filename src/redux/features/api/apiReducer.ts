@@ -1,4 +1,4 @@
-import { ApiState, Action } from "../../interfaces"
+import { ApiState, ApiAction } from "../../interfaces"
 
 import {
     FETCH_JOBS_REQUEST,
@@ -6,15 +6,16 @@ import {
     FETCH_JOBS_ERROR
 } from "./apiTypes"
 
-const intialState = {
+const intialState: ApiState = {
     loading: false,
-    jobs: [],
-    error: ""
-} as ApiState
+    jobs: {
+        data: [],
+        error: ""
+    }
+}
 
 
-
-const jobsReducer = (state = intialState, action: Action) => {
+const jobsReducer  = (state = intialState, action: ApiAction) => {
     const {type, payload} = action
     switch (type) {
         case FETCH_JOBS_REQUEST: return {
@@ -24,14 +25,20 @@ const jobsReducer = (state = intialState, action: Action) => {
 
         case FETCH_JOBS_SUCCESS: return {
             loading: false,
-            jobs: payload,
-            error: ""
+            jobs: {
+                ...state.jobs,
+                data: payload?.data || [],
+                error: ""
+            }
         }
 
         case FETCH_JOBS_ERROR: return {
             loading: false,
-            jobs: [],
-            error: payload
+            jobs: {
+                ...state.jobs,
+                data: [],
+                error: payload?.error
+            }
         }
 
         default: return state

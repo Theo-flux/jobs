@@ -6,12 +6,18 @@ export interface Fetch {
 
 export interface ApiState {
     loading: boolean;
-    jobs: [];
-    error: "" 
+    jobs: {
+        data: {}[];
+        error: string | undefined
+    };
 }
 
-export interface Action {
+export interface ApiAction {
     type: string;
-    info?: string;
-    payload?: any
+    info: string;
+    payload?: {
+        data: {}[];
+        error: string | undefined
+    };
 }
+
